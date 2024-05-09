@@ -41,4 +41,34 @@ function printMatrix(matrix) {
   console.log(ret);
 }
 
-printMatrix(mazeMatrix);
+function pathFinder(matrix) {
+  const row = matrix.length;
+  const col = matrix[0].length;
+  const stPos = findChar(matrix, "e");
+  const edPos = findChar(matrix, "x");
+
+  function path(x, y) {
+    //범위 탈출
+    if (x < 0 || y < 0 || x > row - 1 || y > col - 1) return false;
+
+    //벽이나 지나온 길일 경우
+    if (matrix[x][y] == "%" || matrix[x][y] == "+") return false;
+
+    //목적지에 도착
+    if (x == edPos[0] && y == edPos[1]) return true;
+
+    //그 외
+    matrix[x][y] = "+"; //지나온 길
+    printMatrix(matrix); //확인차 표시
+
+    //재귀형 사분탐색
+    if (path(x + 1, y) || path(x, y + 1) || path(x - 1, y) || path(x, y - 1))
+      return true;
+
+    matrix[x][y] = ".";
+    return false;
+  }
+  path(stPos[0], stPos[1]);
+}
+
+pathFinder(mazeMatrix);
