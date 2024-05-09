@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form name="cal">
+      <table>
+        <caption>
+          계산기
+        </caption>
+        //table head: 결과창 + 입력창
+        <tr>
+          <th colspan="4"><input type="text" name="result" value="0" /></th>
+        </tr>
+        //table row & data : 계산기 버튼
+        <tr>
+          <td><input type="button" value="(" /></td>
+          <td><input type="button" value=")" /></td>
+          <td><input type="button" value="%" /></td>
+          <td><input type="button" class="clearBtn" value="AC" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="7" /></td>
+          <td><input type="button" value="8" /></td>
+          <td><input type="button" value="9" /></td>
+          <td><input type="button" value="/" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="4" /></td>
+          <td><input type="button" value="5" /></td>
+          <td><input type="button" value="6" /></td>
+          <td><input type="button" value="*" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="1" /></td>
+          <td><input type="button" value="2" /></td>
+          <td><input type="button" value="3" /></td>
+          <td><input type="button" value="-" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="0" /></td>
+          <td><input type="button" value="." /></td>
+          <td><input type="button" class="resultBtn" value="=" /></td>
+          <td><input type="button" value="+" /></td>
+        </tr>
+      </table>
+    </form>
+    <script src="/exercise/calculator/cal.js"></script>
+  </body>
+</html>
