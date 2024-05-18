@@ -5,12 +5,15 @@ function quickSort(array) {
 function quickSortHelper(array, left, right) {
   let index;
   if (array.length - 1 > 0) {
+    //기준점 찾기
     index = partition(array, left, right);
 
+    //기준점 기준 왼쪽 배열
     if (left < index - 1) {
       quickSortHelper(array, left, index - 1);
     }
 
+    //기준점 기준 오른쪽 배열
     if (index < right) {
       quickSortHelper(array, index, right);
     }
