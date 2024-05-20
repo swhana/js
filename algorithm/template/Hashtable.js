@@ -7,12 +7,12 @@ function Hashtable(size) {
 }
 
 Hashtable.prototype.hash = function (key) {
-  if (!Number.isInteger(key)) throw "Must be integer";
+  if (!Number.isInteger(key)) throw new Error("Must be integer");
   return key % this.size; //해시테이블의 모듈러연산을 한 값을 키로
 };
 
 Hashtable.prototype.put = function (key, value) {
-  if (this.limit >= this.size) throw "Hashtable is Full";
+  if (this.limit >= this.size) throw new Error("Hashtable is Full");
 
   let hashedIndex = this.hash(key);
   //Hash key값이 null일때까지 hashIndex 확장
@@ -22,7 +22,7 @@ Hashtable.prototype.put = function (key, value) {
   }
   this.keys[hashedIndex] = key;
   this.values[hashedIndex] = value;
-  this.limit;
+  this.limit++;
 };
 
 Hashtable.prototype.get = function (key) {
@@ -46,5 +46,6 @@ exTable.put(59, "wow");
 exTable.put(72, "forty");
 exTable.put(85, "happy");
 exTable.put(98, "sad");
+exTable.put("324", "blue");
 
 console.log(exTable);
