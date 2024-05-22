@@ -53,3 +53,48 @@ SinglyLinkedList.prototype.remove = function (value) {
     this.size--;
   }
 };
+
+//헤드 삭제하는 함수
+SinglyLinkedList.prototype.removeHead = function () {
+  if (this.head == null) return null;
+  this.head = this.head.next;
+  this.size--;
+};
+
+//링크드리스트 전체를 순회하는 겸 확인하기 편하도록
+SinglyLinkedList.prototype.iterate = function () {
+  let ret = "";
+  if (this.head == null) return null;
+  else {
+    let curr = this.head;
+    while (curr != null) {
+      ret += curr.data + " -> ";
+      curr = curr.next;
+    }
+  }
+  ret += "null";
+  console.log(ret);
+};
+
+SinglyLinkedList.prototype.search = function (value) {
+  let curr = this.head;
+  let count = 1;
+  while (curr) {
+    if (curr.data == value) {
+      return console.log(`${count}번째 노드에 있습니다`);
+      // return true;
+    }
+    curr = curr.next;
+    count++;
+  }
+
+  return console.log("찾으시는 값이 없습니다");
+  // return false;
+};
+
+let sll = new SinglyLinkedList();
+sll.insert(1);
+sll.insert(12);
+sll.insert(20);
+sll.search(1);
+sll.iterate();
