@@ -31,6 +31,7 @@ class DoublyLinkedList {
       //헤드 교체
       this.head = newHead;
     }
+    this.size++;
   }
 }
 
