@@ -101,6 +101,17 @@ class DoublyLinkedList {
 
     console.log(ret);
   }
+
+  search(value) {
+    let curr = this.head;
+    while (curr.next) {
+      if (curr.data == value) return true;
+      curr = curr.next;
+    }
+    if (curr.data == value) return true;
+
+    return false;
+  }
 }
 
 let dll = new DoublyLinkedList();
@@ -110,4 +121,5 @@ dll.insertHead(3);
 dll.insertTail(4);
 dll.insertTail(5);
 dll.removeTail();
+console.log(dll.search(5));
 dll.iterate();
