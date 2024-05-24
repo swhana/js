@@ -66,30 +66,8 @@ class AVLTree {
             node.right = this.insertNode(node.right, data);
         } else return node;
 
-        //여기부터 AVL트리의 차별점
-        node.height = Math.max(this.getHeight(node.left), this.getHeight(node.right)) + 1;
 
-        const bf = this.getBalanceFactor(node);
-
-        //LL Case
-        if (bf > 1 && data < node.left.data) return this.rotateRight(node);
-
-        //RR Case
-        if (bf < -1 && data > node.right.data) return this.rotateLeft(node);
-
-        //LR Case
-        if (bf > 1 && data > node.left.data) {
-            node.left = this.rotateLeft(node.left);
-            return this.rotateRight(node);
-        }
-
-        //RL Case
-        if (bf < -1 && data < node.right.data) {
-            node.right = this.rotateRight(node.right);
-            return this.rotateLeft(node);
-        }
-
-        return node;
+        return this.balance(node, data);
     }
 
     insert(data) {
@@ -122,30 +100,8 @@ class AVLTree {
             }
         }
 
-        //여기부터 AVL트리의 차별점
-        node.height = Math.max(this.getHeight(node.left), this.getHeight(node.right)) + 1;
 
-        const bf = this.getBalanceFactor(node);
-
-        //LL Case
-        if (bf > 1 && data < node.left.data) return this.rotateRight(node);
-
-        //RR Case
-        if (bf < -1 && data > node.right.data) return this.rotateLeft(node);
-
-        //LR Case
-        if (bf > 1 && data > node.left.data) {
-            node.left = this.rotateLeft(node.left);
-            return this.rotateRight(node);
-        }
-
-        //RL Case
-        if (bf < -1 && data < node.right.data) {
-            node.right = this.rotateRight(node.right);
-            return this.rotateLeft(node);
-        }
-
-        return node;
+        return this.balance(node, data);
     }
 
     remove(data) {
@@ -158,7 +114,7 @@ class AVLTree {
         return node;
     }
 
-    balance(node) {
+    balance(node, data) {
         //여기부터 AVL트리의 차별점
         node.height = Math.max(this.getHeight(node.left), this.getHeight(node.right)) + 1;
 
