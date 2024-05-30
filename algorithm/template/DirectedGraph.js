@@ -96,6 +96,34 @@ class DirectedGraph {
         }
         return dist; //거리 집합을 리턴
     }
+
+    topologicalSort() {
+        let visited = new Set();
+        let stack = [];
+
+        for (let v in this.edges) {
+            if (visited.has(v) == false) this._topologicalSort(v, visited, stack);
+        }
+
+        return stack;
+    }
+
+    //위상정렬
+    //결은 DFS와 같다
+    _topologicalSort(vertex, visited, stack) {
+        visited.add(vertex);
+
+        //vertex에 인접한 모든 정점을 찾는다
+        for (let v in this.edges[vertex]) {
+            //방문한 적 없는 정점이면 위상정렬을 수행한다
+            if (visited.has(v) == false) {
+                this._topologicalSort(v, visited, stack);
+            }
+        }
+        stack.unshift(vertex); //stack의 맨 밑에 vertex를 넣는다.
+    }
+
+
 }
 
 function _isEmpty(obj) {
@@ -104,8 +132,8 @@ function _isEmpty(obj) {
 
 
 let graph = new DirectedGraph();
-graph.addVertex("A"); graph.addVertex("B"); graph.addVertex("C"); graph.addVertex("D");
-graph.addEdge("A", "B", 1); graph.addEdge("A", "D", 1); graph.addEdge("B", "C", 1); graph.addEdge("C", "A", 1);
+graph.addVertex("A"); graph.addVertex("B"); graph.addVertex("C"); graph.addVertex("D"); graph.addVertex("E"); graph.addVertex("F");
+graph.addEdge("B", "A", 1); graph.addEdge("D", "C", 1); graph.addEdge("D", "B", 1); graph.addEdge("B", "A", 1); graph.addEdge("A", "F", 1); graph.addEdge("E", "C", 1);
 
 console.log(graph);
-console.log(graph.dijkstra('A'));
+console.log(graph.topologicalSort());
