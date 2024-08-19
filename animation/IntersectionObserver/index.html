@@ -19,6 +19,7 @@
                 color: white;
                 text-align: center;
                 transition: all 1s;
+                /* transform: rotate(-720deg); */
                 opacity: 0;
             }
         </style>
@@ -31,6 +32,7 @@
                 e.forEach((element) => {
                     if (element.isIntersecting) {
                         element.target.style.opacity = 1;
+                        // element.target.style.transform = "rotate(0deg)";
                     } else {
                         element.target.style.opacity = 0;
                     }
