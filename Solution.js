@@ -1,10 +1,19 @@
-let str = "He's my king from this day until his last day";
-let count = 0;
-let pos = str.indexOf("a");
+let o = {
+    m: function () {
+        let self = this;
+        console.log(self);
+        f();
 
-while (pos !== -1) {
-  count++;
-  pos = str.indexOf("a", pos + 1);
-}
+        function f() {
+            return console.log(this === o);
+        }
 
-console.log(count); // str 문자열 안에 a가 몇회 등장하는지
+        // const라 호이스팅이 안됨
+        const g = () => {
+            return console.log(this === o);
+        };
+        g();
+    },
+};
+
+o.m();

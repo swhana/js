@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Intersection Observer</title>
+    </head>
+    <body>
+        <style>
+            body {
+                background: black;
+                height: 6000px;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+                    "Helvetica Neue", sans-serif;
+            }
+            div {
+                margin-top: 1000px;
+                color: white;
+                text-align: center;
+                transition: all 1s;
+                opacity: 0;
+            }
+        </style>
+        <div><h1>Safari.</h1></div>
+        <div><h1>개인정보 보호에 진심인 브라우저.</h1></div>
+        <div><h1>개인정보 보호.</h1></div>
+        <div><h1>iPhone이니까.</h1></div>
+        <script>
+            const observer = new IntersectionObserver((e) => {
+                e.forEach((element) => {
+                    if (element.isIntersecting) {
+                        element.target.style.opacity = 1;
+                    } else {
+                        element.target.style.opacity = 0;
+                    }
+                });
+            });
+
+            const div = document.querySelectorAll("div");
+            observer.observe(div[0]);
+            observer.observe(div[1]);
+            observer.observe(div[2]);
+            observer.observe(div[3]);
+        </script>
+    </body>
+</html>
